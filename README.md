@@ -1,1 +1,1 @@
-hi. this repo is updated and managed through a private repo, this only exists to be served publicly through github pages.
+This repo is updated and managed through a private repo. This only exists to be served publicly through github pages.

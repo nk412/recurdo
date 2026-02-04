@@ -1,72 +1,2177 @@
-<!DOCTYPE html><html lang=en><head><meta charset=UTF-8><meta name=viewport content="width=device-width, initial-scale=1.0"><title>recurdo</title><link rel=preconnect href=https://fonts.googleapis.com><link rel=preconnect href=https://fonts.gstatic.com crossorigin><link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel=stylesheet><style>:root{--primary-color:#333;--accent-color:#4285f4;--accent-hover:#2a75f3;--light-bg:#f5f5f5;--dark-bg:#222;--border-color:#ddd;--text-color:#333;--text-muted:#777;--button-primary:#ffca28;--button-primary-hover:#ffb300}*{box-sizing:border-box;margin:0;padding:0;font-family:"Lexend",sans-serif}.neucha-regular{font-family:"Neucha",cursive;font-weight:400;font-style:normal}body{background-color:#fff;color:var(--text-color);line-height:1.6;padding-bottom:60px}header{padding:20px;padding-bottom:10px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--border-color)}.logo{display:flex;align-items:center;font-size:24px;font-weight:bold;color:var(--primary-color)}.logo::before{content:"↻";margin-right:8px;font-size:22px}.nav-tabs{display:flex;margin:25px 0 3em 0;gap:10px}.tab{padding:8px 16px;border:1px solid var(--border-color);border-radius:4px;background-color:#fff;cursor:pointer;transition:all .2s}.tab.active{background-color:var(--dark-bg);color:white}.tab:hover:not(.active){background-color:var(--light-bg)}.container{max-width:800px;margin:0 auto;padding:0 20px}header .container{display:flex;justify-content:space-between;align-items:center;width:100%}.task-list{margin-top:20px}.task-item{display:flex;align-items:center;padding:2px 0;margin-bottom:8px}.task-item:hover{background-color:rgba(240,240,240,0.9);border-radius:4px}.task-icon{margin-right:10px;font-size:20px}.task-content{flex-grow:1}.task-title{font-size:16 px;font-weight:500;color:var(--accent-color)}.task-title.completed{text-decoration:line-through;color:var(--text-muted)}.task-title a{text-decoration:none;color:var(--accent-color)}.task-title a:hover{text-decoration:underline}.task-frequency{font-size:14px;color:var(--text-muted);margin-left:5px;display:inline-block;padding:2px 6px;background-color:#f0f0f0;border-radius:4px}.task-description{font-size:14px;color:var(--text-color);margin-top:4px}.task-buttons{display:flex;gap:6px}button{padding:6px 12px;background-color:#fff;border:1px solid var(--border-color);border-radius:4px;cursor:pointer;font-size:14px;transition:all .2s}button:hover{background-color:var(--light-bg)}.status-message{margin:20px 0;font-size:18px;color:var(--text-color)}.add-task-form{background-color:var(--light-bg);border-radius:8px;padding:20px;margin-top:20px}.form-group{margin-bottom:15px}label{display:block;margin-bottom:5px;font-weight:500}input[type="text"],textarea,select{width:100%;padding:8px 12px;border:1px solid var(--border-color);border-radius:4px;font-size:16px}.frequency-options{margin-top:10px;display:none}.frequency-options.show{display:block}.checkbox-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:8px;margin-top:10px}.month-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:5px;margin-top:10px}.checkbox-label{display:flex;align-items:center;font-size:14px}.submit-btn{background-color:var(--accent-color);color:white;border:0;padding:10px 16px;border-radius:4px;font-size:16px;cursor:pointer;transition:background-color .2s}.submit-btn:hover{background-color:var(--accent-hover)}.hidden{display:none}.task-details{padding:20px;background-color:var(--light-bg);border-radius:8px;margin-top:20px}.back-link{display:inline-block;margin-top:10px;color:var(--accent-color);text-decoration:none}.back-link:hover{text-decoration:underline}.edit-link{color:var(--accent-color);margin-left:10px;text-decoration:none;font-size:14px}.edit-link:hover{text-decoration:underline}@media(max-width:600px){.checkbox-grid,.month-grid{grid-template-columns:repeat(4,1fr)}}.hamburger-menu{position:relative;display:inline-block;margin-left:auto}.hamburger-icon{font-size:24px;cursor:pointer;padding:8px;color:var(--primary-color)}.menu-dropdown{display:none;position:absolute;right:0;background-color:white;min-width:180px;box-shadow:0 8px 16px 0 rgba(0,0,0,0.2);z-index:1;border-radius:4px}.menu-dropdown a{color:var(--text-color);padding:12px 16px;text-decoration:none;display:block;border-bottom:1px solid var(--border-color)}.menu-dropdown a:last-child{border-bottom:0}.menu-dropdown a:hover{background-color:var(--light-bg)}.show-menu{display:block}.modal-overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background-color:rgba(0,0,0,0.5);z-index:100;align-items:center;justify-content:center}.modal-content{background-color:white;padding:20px;border-radius:8px;max-width:500px;width:90%;position:relative}.modal-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:15px}.modal-close{cursor:pointer;font-size:24px}.modal-body{margin-bottom:20px}</style></head><body><header><div class=container><div class=logo>recurdo</div><div class=hamburger-menu><div class=hamburger-icon>☰</div><div class=menu-dropdown><a href=# id=about-app>About</a><a href=# id=download-tasks>Download all tasks</a><a href=# id=upload-tasks>Upload tasks</a></div></div></div></header><div class=container><div class=nav-tabs><button class="tab active" data-view=today>Today</button><button class=tab data-view=add>Add New</button><button class=tab data-view=all>View All</button></div></div><div class=container><div id=today-view class=view><div class=status-message id=today-status></div><div class=task-list id=today-tasks></div><br><br><br><div class=upcoming-section><h3>Upcoming</h3><div class=task-list id=upcoming-tasks></div></div></div><div id=add-view class="view hidden"><div class=add-task-form><h2>Add New Task</h2><form id=task-form><div class=form-group><label for=task-title>Task Title</label><input type=text id=task-title required></div><div class=form-group><label for=task-description>Description (optional)</label><textarea id=task-description rows=3></textarea></div><div class=form-group><label for=task-frequency>Frequency</label><select id=task-frequency required><option value>Select frequency</option><option value=daily>Daily</option><option value=weekly>Weekly</option><option value=monthly>Monthly</option><option value=quarterly>Quarterly</option><option value=yearly>Yearly</option><option value=custom_interval>Custom Interval</option></select></div><div id=daily-options class=frequency-options></div><div id=weekly-options class=frequency-options><label>Select days of the week:</label><div class=checkbox-grid><label class=checkbox-label><input type=checkbox name=weekday value=0> Sun </label><label class=checkbox-label><input type=checkbox name=weekday value=1> Mon </label><label class=checkbox-label><input type=checkbox name=weekday value=2> Tue </label><label class=checkbox-label><input type=checkbox name=weekday value=3> Wed </label><label class=checkbox-label><input type=checkbox name=weekday value=4> Thu </label><label class=checkbox-label><input type=checkbox name=weekday value=5> Fri </label><label class=checkbox-label><input type=checkbox name=weekday value=6> Sat </label></div></div><div id=monthly-options class=frequency-options><label>Select days of the month:</label><div class=month-grid id=month-days-grid></div></div><div id=quarterly-options class=frequency-options><label>Select days of each quarter:</label><div class=month-grid id=quarter-days-grid></div><p class=hint>Select days 1-90 (representing days in each quarter)</p></div><div id=yearly-options class=frequency-options><div class=form-group><label for=yearly-month>Month:</label><select id=yearly-month><option value=0>January</option><option value=1>February</option><option value=2>March</option><option value=3>April</option><option value=4>May</option><option value=5>June</option><option value=6>July</option><option value=7>August</option><option value=8>September</option><option value=9>October</option><option value=10>November</option><option value=11>December</option></select></div><div class=form-group><label for=yearly-day>Day:</label><select id=yearly-day></select></div></div><div id=custom_interval-options class=frequency-options><div class=form-group><label for=interval-days>Days between occurrences:</label><input type=number id=interval-days min=1 value=7></div></div><button type=submit class=submit-btn>Add Task</button></form></div></div><div id=all-view class="view hidden"><h2>All Tasks</h2><div class=task-list id=all-tasks></div></div><div id=edit-view class="view hidden"></div><div id=details-view class="view hidden"></div></div><div class=modal-overlay id=about-modal><div class=modal-content><div class=modal-header><h2>About ↻</h2><span class=modal-close>&times;</span></div><div class=modal-body><p><b>Recurdo</b> is a task tracker exclusively for recurring tasks.</p><br><p>Use it for habit building, tracking odd schedules, or remembering your neighbor's cat's birthday (if you're so inclined).</p><br><p>Nothing leaves the browser. All data is yours.</p></div></div></div><script>document.addEventListener('DOMContentLoaded',function(){const tabs=document.querySelectorAll('.tab');const views=document.querySelectorAll('.view');const taskForm=document.getElementById('task-form');const taskFrequency=document.getElementById('task-frequency');const frequencyOptions=document.querySelectorAll('.frequency-options');const todayTasks=document.getElementById('today-tasks');const allTasks=document.getElementById('all-tasks');const todayStatus=document.getElementById('today-status');const yearlyMonth=document.getElementById('yearly-month');const yearlyDay=document.getElementById('yearly-day');const editView=document.getElementById('edit-view');const detailsView=document.getElementById('details-view');const monthDaysGrid=document.getElementById('month-days-grid');const quarterDaysGrid=document.getElementById('quarter-days-grid');const hamburgerIcon=document.querySelector('.hamburger-icon');const menuDropdown=document.querySelector('.menu-dropdown');const downloadTasksLink=document.getElementById('download-tasks');const uploadTasksLink=document.getElementById('upload-tasks');const aboutAppLink=document.getElementById('about-app');const aboutModal=document.getElementById('about-modal');const modalClose=document.querySelector('.modal-close');hamburgerIcon.addEventListener('click',function(){menuDropdown.classList.toggle('show-menu');});window.addEventListener('click',function(e){if(!e.target.matches('.hamburger-icon')){if(menuDropdown.classList.contains('show-menu')){menuDropdown.classList.remove('show-menu');}}});downloadTasksLink.addEventListener('click',function(e){e.preventDefault();const tasks=localStorage.getItem('recurdo-tasks')||'[]';const history=localStorage.getItem('recurdo-history')||'{}';const exportData={tasks:JSON.parse(tasks),history:JSON.parse(history),exportDate:new Date().toISOString()};const dataStr=JSON.stringify(exportData,null,2);const dataUri='data:application/json;charset=utf-8,'+encodeURIComponent(dataStr);const exportFileDefaultName='tasks.recurdo';const linkElement=document.createElement('a');linkElement.setAttribute('href',dataUri);linkElement.setAttribute('download',exportFileDefaultName);linkElement.click();menuDropdown.classList.remove('show-menu');});uploadTasksLink.addEventListener('click',function(e){e.preventDefault();const fileInput=document.createElement('input');fileInput.type='file';fileInput.accept='.recurdo,application/json';fileInput.addEventListener('change',function(e){const file=e.target.files[0];if(!file)return;const reader=new FileReader();reader.onload=function(e){try{const data=JSON.parse(e.target.result);if(!data.tasks||!Array.isArray(data.tasks)){throw new Error('Invalid tasks data format');}
-if(confirm('This will replace your current tasks. Continue?')){localStorage.setItem('recurdo-tasks',JSON.stringify(data.tasks));if(data.history&&typeof data.history==='object'){localStorage.setItem('recurdo-history',JSON.stringify(data.history));}
-TaskManager.renderAllTasks();TaskManager.renderTodayTasks();alert('Tasks imported successfully!');}}catch(error){alert('Error importing file: '+error.message);}};reader.readAsText(file);});fileInput.click();menuDropdown.classList.remove('show-menu');});aboutAppLink.addEventListener('click',function(e){e.preventDefault();aboutModal.style.display='flex';menuDropdown.classList.remove('show-menu');});modalClose.addEventListener('click',function(){aboutModal.style.display='none';});aboutModal.addEventListener('click',function(e){if(e.target===aboutModal){aboutModal.style.display='none';}});function initMonthDaysGrid(){monthDaysGrid.innerHTML='';for(let i=1;i<=31;i++){const label=document.createElement('label');label.className='checkbox-label';label.innerHTML=`<input type="checkbox" name="month-day" value="${i}"> ${i}`;monthDaysGrid.appendChild(label);}}
-function initQuarterDaysGrid(){quarterDaysGrid.innerHTML='';for(let i=1;i<=90;i++){const label=document.createElement('label');label.className='checkbox-label';label.innerHTML=`<input type="checkbox" name="quarter-day" value="${i}"> ${i}`;quarterDaysGrid.appendChild(label);}}
-function updateYearlyDayOptions(){const month=parseInt(yearlyMonth.value);const daysInMonth=new Date(new Date().getFullYear(),month+1,0).getDate();yearlyDay.innerHTML='';for(let i=1;i<=daysInMonth;i++){const option=document.createElement('option');option.value=i;option.textContent=i;yearlyDay.appendChild(option);}}
-const TaskStorage={getTasks:function(){const tasks=localStorage.getItem('recurdo-tasks');return tasks?JSON.parse(tasks):[];},saveTask:function(task){const tasks=this.getTasks();task.id=Date.now();task.createdAt=new Date().toISOString();tasks.push(task);localStorage.setItem('recurdo-tasks',JSON.stringify(tasks));return task;},updateTask:function(updatedTask){const tasks=this.getTasks();const index=tasks.findIndex(task=>task.id===updatedTask.id);if(index!==-1){tasks[index]=updatedTask;localStorage.setItem('recurdo-tasks',JSON.stringify(tasks));return true;}
-return false;},deleteTask:function(taskId){let tasks=this.getTasks();tasks=tasks.filter(task=>task.id!==taskId);localStorage.setItem('recurdo-tasks',JSON.stringify(tasks));},getTaskById:function(taskId){const tasks=this.getTasks();return tasks.find(task=>task.id===taskId);},getCompletionHistory:function(){const history=localStorage.getItem('recurdo-history');return history?JSON.parse(history):{};},markTaskComplete:function(taskId,date){const dateKey=date||new Date().toISOString().split('T')[0];const history=this.getCompletionHistory();if(!history[dateKey]){history[dateKey]=[];}
-if(!history[dateKey].includes(taskId)){history[dateKey].push(taskId);localStorage.setItem('recurdo-history',JSON.stringify(history));return true;}
-return false;},undoTaskComplete:function(taskId,date){const dateKey=date||new Date().toISOString().split('T')[0];const history=this.getCompletionHistory();if(history[dateKey]&&history[dateKey].includes(taskId)){history[dateKey]=history[dateKey].filter(id=>id!==taskId);localStorage.setItem('recurdo-history',JSON.stringify(history));return true;}
-return false;},isTaskCompleted:function(taskId,date){const dateKey=date||new Date().toISOString().split('T')[0];const history=this.getCompletionHistory();return history[dateKey]&&history[dateKey].includes(taskId);}};const DateUtils={formatDate:function(date){const d=new Date(date);return d.toISOString().split('T')[0];},today:function(){return this.formatDate(new Date());},getDayOfQuarter:function(date){const d=new Date(date);const month=d.getMonth();const quarter=Math.floor(month/3);const firstMonthOfQuarter=quarter*3;const firstDayOfQuarter=new Date(d.getFullYear(),firstMonthOfQuarter,1);const diffTime=d.getTime()-firstDayOfQuarter.getTime();const diffDays=Math.floor(diffTime/(1000*60*60*24))+1;return diffDays;},shouldTaskBeActiveOnDate:function(task,dateStr){const date=new Date(dateStr);const dayOfWeek=date.getDay();const dayOfMonth=date.getDate();const month=date.getMonth();const dayOfQuarter=this.getDayOfQuarter(date);switch(task.frequency){case'daily':return true;case'weekly':return task.weekdays.includes(dayOfWeek.toString());case'monthly':return task.monthDays.includes(dayOfMonth.toString());case'quarterly':return task.quarterDays.includes(dayOfQuarter.toString());case'yearly':return month===parseInt(task.yearlyMonth)&&dayOfMonth===parseInt(task.yearlyDay);case'custom_interval':const taskCreated=new Date(task.createdAt);const diffTime=date.getTime()-taskCreated.getTime();const diffDays=Math.floor(diffTime/(1000*60*60*24));return diffDays%task.intervalDays===0;default:return false;}}};const TaskManager={getTasksForDate:function(dateStr){const allTasks=TaskStorage.getTasks();return allTasks.filter(task=>DateUtils.shouldTaskBeActiveOnDate(task,dateStr));},getTodayTasks:function(){return this.getTasksForDate(DateUtils.today());},renderTodayTasks:function(){const tasks=this.getTodayTasks();todayTasks.innerHTML='';if(tasks.length===0){todayStatus.textContent='No tasks for today. Feel the quiet. 🧘';return;}
-const completedTasks=tasks.filter(task=>TaskStorage.isTaskCompleted(task.id,DateUtils.today()));if(tasks.length-completedTasks.length===0&&tasks.length>0){todayStatus.textContent=`You're all done for today!`;}else{todayStatus.textContent=`You have ${tasks.length - completedTasks.length} out of ${tasks.length} tasks pending for today.`;};tasks.forEach(task=>{const isCompleted=TaskStorage.isTaskCompleted(task.id,DateUtils.today());const taskItem=this.createTaskItem(task,isCompleted);todayTasks.appendChild(taskItem);});this.renderUpcomingTasks(30);},renderUpcomingTasks:function(daysToShow){const upcomingTasksContainer=document.getElementById('upcoming-tasks');upcomingTasksContainer.innerHTML='';const today=new Date();today.setHours(0,0,0,0);const allTasks=TaskStorage.getTasks();const taskOccurrences={};const taskFirstDate={};for(let i=1;i<=daysToShow;i++){const futureDate=new Date(today);futureDate.setDate(today.getDate()+i);const dateStr=DateUtils.formatDate(futureDate);allTasks.forEach(task=>{if(DateUtils.shouldTaskBeActiveOnDate(task,dateStr)){if(!taskOccurrences[task.id]){taskOccurrences[task.id]=0;taskFirstDate[task.id]=dateStr;}
-taskOccurrences[task.id]++;}});}
-if(Object.keys(taskOccurrences).length===0){upcomingTasksContainer.innerHTML='<p class="status-message">None in the next 30 days.</p>';return;}
-const upcomingTasks=Object.keys(taskOccurrences).map(taskId=>{const task=allTasks.find(t=>t.id===parseInt(taskId));const count=taskOccurrences[taskId];const firstDate=new Date(taskFirstDate[taskId]);return{task:task,count:count,firstDate:firstDate};});upcomingTasks.sort((a,b)=>a.firstDate-b.firstDate);upcomingTasks.forEach(item=>{const taskItem=document.createElement('div');taskItem.className='task-item';const formattedDate=item.firstDate.toLocaleDateString(undefined,{weekday:'short',month:'short',day:'numeric'});taskItem.innerHTML=`
-          <div class="task-icon">❖</div>
-          <div class="task-content">
-            <small>
-            <a href="#" class="task-title" data-task-id="${item.task.id}">${item.task.title}</a>
-            <span class="task-frequency">${item.task.frequency}</span>
-            <div class="task-description">
-              ${item.count > 1 ? `<strong>x${item.count}</strong>in the next ${daysToShow}days` : `Once on ${formattedDate}`}
-              <span style="margin-left: 10px; font-size: 0.9em; color: var(--text-muted);">First: ${formattedDate}</span>
-            </small>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recurdo - Recurring Task Tracker</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-primary: #0a0a0f;
+      --bg-secondary: #12121a;
+      --bg-card: #1a1a24;
+      --bg-card-hover: #22222e;
+      --bg-elevated: #252532;
+      --accent-primary: #6366f1;
+      --accent-secondary: #818cf8;
+      --accent-glow: rgba(99, 102, 241, 0.15);
+      --accent-success: #10b981;
+      --accent-success-glow: rgba(16, 185, 129, 0.15);
+      --accent-warning: #f59e0b;
+      --accent-danger: #ef4444;
+      --text-primary: #f4f4f5;
+      --text-secondary: #a1a1aa;
+      --text-muted: #71717a;
+      --border-color: rgba(255, 255, 255, 0.08);
+      --border-hover: rgba(255, 255, 255, 0.15);
+      --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+      --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4);
+      --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.5);
+      --shadow-glow: 0 0 40px var(--accent-glow);
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+      --radius-xl: 24px;
+      --transition-fast: 150ms ease;
+      --transition-normal: 250ms ease;
+      --transition-slow: 350ms ease;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      line-height: 1.6;
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* Subtle gradient background */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 100vh;
+      background:
+        radial-gradient(ellipse at 20% 20%, rgba(99, 102, 241, 0.08) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 80%, rgba(129, 140, 248, 0.05) 0%, transparent 50%);
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    /* Header */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(10, 10, 15, 0.8);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .header-content {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 16px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--text-primary);
+      letter-spacing: -0.5px;
+    }
+
+    .logo-icon {
+      width: 36px;
+      height: 36px;
+      background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      color: white;
+      box-shadow: var(--shadow-md), 0 0 20px var(--accent-glow);
+    }
+
+    .menu-btn {
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      transition: all var(--transition-fast);
+      color: var(--text-secondary);
+    }
+
+    .menu-btn:hover {
+      background: var(--bg-card-hover);
+      border-color: var(--border-hover);
+      color: var(--text-primary);
+    }
+
+    .menu-btn svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    .menu-dropdown {
+      position: absolute;
+      top: calc(100% + 8px);
+      right: 24px;
+      background: var(--bg-elevated);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      min-width: 200px;
+      padding: 8px;
+      box-shadow: var(--shadow-lg);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-8px);
+      transition: all var(--transition-normal);
+    }
+
+    .menu-dropdown.show-menu {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .menu-dropdown a {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 16px;
+      color: var(--text-secondary);
+      text-decoration: none;
+      border-radius: var(--radius-sm);
+      transition: all var(--transition-fast);
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .menu-dropdown a:hover {
+      background: var(--bg-card);
+      color: var(--text-primary);
+    }
+
+    .menu-dropdown a svg {
+      width: 18px;
+      height: 18px;
+      opacity: 0.7;
+    }
+
+    /* Navigation Tabs */
+    .nav-container {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 24px 24px 0;
+    }
+
+    .nav-tabs {
+      display: flex;
+      gap: 8px;
+      background: var(--bg-secondary);
+      padding: 6px;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-color);
+    }
+
+    .tab {
+      flex: 1;
+      padding: 12px 20px;
+      background: transparent;
+      border: none;
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-muted);
+      transition: all var(--transition-normal);
+      position: relative;
+    }
+
+    .tab:hover:not(.active) {
+      color: var(--text-secondary);
+      background: var(--bg-card);
+    }
+
+    .tab.active {
+      background: var(--accent-primary);
+      color: white;
+      box-shadow: var(--shadow-md), 0 0 20px var(--accent-glow);
+    }
+
+    /* Main Container */
+    .container {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 24px;
+    }
+
+    /* Views */
+    .view {
+      animation: fadeIn var(--transition-normal);
+    }
+
+    .view.hidden {
+      display: none;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Status Message */
+    .status-message {
+      text-align: center;
+      padding: 32px 24px;
+      color: var(--text-secondary);
+      font-size: 16px;
+      background: var(--bg-card);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-color);
+      margin-bottom: 24px;
+    }
+
+    .status-message.empty {
+      background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-secondary) 100%);
+    }
+
+    .status-icon {
+      font-size: 48px;
+      margin-bottom: 12px;
+      display: block;
+      opacity: 0.5;
+    }
+
+    .status-highlight {
+      color: var(--accent-primary);
+      font-weight: 600;
+    }
+
+    /* Task List */
+    .task-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    /* Task Item */
+    .task-item {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 16px 20px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      transition: all var(--transition-fast);
+      cursor: default;
+    }
+
+    .task-item:hover {
+      background: var(--bg-card-hover);
+      border-color: var(--border-hover);
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .task-checkbox {
+      width: 24px;
+      height: 24px;
+      border: 2px solid var(--border-hover);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: all var(--transition-fast);
+      color: transparent;
+    }
+
+    .task-item.completed .task-checkbox {
+      background: var(--accent-success);
+      border-color: var(--accent-success);
+      color: white;
+      box-shadow: 0 0 12px var(--accent-success-glow);
+    }
+
+    .task-checkbox svg {
+      width: 14px;
+      height: 14px;
+    }
+
+    .task-content {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .task-title {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--text-primary);
+      text-decoration: none;
+      display: block;
+      transition: color var(--transition-fast);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .task-title:hover {
+      color: var(--accent-secondary);
+    }
+
+    .task-item.completed .task-title {
+      color: var(--text-muted);
+      text-decoration: line-through;
+    }
+
+    .task-meta {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 4px;
+    }
+
+    .task-frequency {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--accent-secondary);
+      background: var(--accent-glow);
+      padding: 3px 8px;
+      border-radius: 4px;
+      text-transform: capitalize;
+    }
+
+    .task-description-preview {
+      font-size: 12px;
+      color: var(--text-muted);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .task-actions {
+      display: flex;
+      gap: 8px;
+      flex-shrink: 0;
+    }
+
+    /* Buttons */
+    button {
+      font-family: inherit;
+      cursor: pointer;
+      transition: all var(--transition-fast);
+    }
+
+    .btn {
+      padding: 8px 16px;
+      font-size: 13px;
+      font-weight: 600;
+      border-radius: var(--radius-sm);
+      border: 1px solid transparent;
+    }
+
+    .btn-primary {
+      background: var(--accent-primary);
+      color: white;
+      border-color: var(--accent-primary);
+    }
+
+    .btn-primary:hover {
+      background: var(--accent-secondary);
+      border-color: var(--accent-secondary);
+      box-shadow: 0 0 20px var(--accent-glow);
+    }
+
+    .btn-success {
+      background: var(--accent-success);
+      color: white;
+      border-color: var(--accent-success);
+    }
+
+    .btn-success:hover {
+      background: #0ea572;
+      box-shadow: 0 0 20px var(--accent-success-glow);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--text-secondary);
+      border-color: var(--border-color);
+    }
+
+    .btn-ghost:hover {
+      background: var(--bg-elevated);
+      color: var(--text-primary);
+      border-color: var(--border-hover);
+    }
+
+    .btn-danger {
+      background: transparent;
+      color: var(--accent-danger);
+      border-color: var(--accent-danger);
+    }
+
+    .btn-danger:hover {
+      background: var(--accent-danger);
+      color: white;
+    }
+
+    /* Section Headers */
+    .section-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin: 32px 0 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .section-title {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    /* Upcoming Section */
+    .upcoming-section {
+      margin-top: 40px;
+    }
+
+    .upcoming-item {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 14px 20px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      transition: all var(--transition-fast);
+    }
+
+    .upcoming-item:hover {
+      background: var(--bg-card-hover);
+      border-color: var(--border-hover);
+    }
+
+    .upcoming-dot {
+      width: 8px;
+      height: 8px;
+      background: var(--accent-primary);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .upcoming-date {
+      font-size: 12px;
+      color: var(--text-muted);
+      background: var(--bg-elevated);
+      padding: 4px 10px;
+      border-radius: 4px;
+      margin-left: auto;
+      flex-shrink: 0;
+    }
+
+    .upcoming-count {
+      font-size: 12px;
+      color: var(--accent-secondary);
+      font-weight: 600;
+    }
+
+    /* Form Styles */
+    .form-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+    }
+
+    .form-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .form-title-icon {
+      width: 40px;
+      height: 40px;
+      background: var(--accent-glow);
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent-primary);
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-label {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-secondary);
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+    }
+
+    .form-input,
+    .form-select,
+    .form-textarea {
+      width: 100%;
+      padding: 12px 16px;
+      font-size: 15px;
+      font-family: inherit;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      color: var(--text-primary);
+      transition: all var(--transition-fast);
+    }
+
+    .form-input:focus,
+    .form-select:focus,
+    .form-textarea:focus {
+      outline: none;
+      border-color: var(--accent-primary);
+      box-shadow: 0 0 0 3px var(--accent-glow);
+    }
+
+    .form-input::placeholder,
+    .form-textarea::placeholder {
+      color: var(--text-muted);
+    }
+
+    .form-select {
+      cursor: pointer;
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2371717a' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 12px center;
+      padding-right: 40px;
+    }
+
+    .form-textarea {
+      resize: vertical;
+      min-height: 80px;
+    }
+
+    /* Frequency Options */
+    .frequency-options {
+      display: none;
+      margin-top: 16px;
+      padding: 20px;
+      background: var(--bg-secondary);
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-color);
+      animation: slideDown var(--transition-normal);
+    }
+
+    .frequency-options.show {
+      display: block;
+    }
+
+    @keyframes slideDown {
+      from { opacity: 0; transform: translateY(-8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .frequency-options label:first-child {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-secondary);
+      margin-bottom: 12px;
+      display: block;
+    }
+
+    /* Checkbox Grid */
+    .checkbox-grid,
+    .month-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .checkbox-label {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 8px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      transition: all var(--transition-fast);
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-secondary);
+    }
+
+    .checkbox-label:hover {
+      border-color: var(--accent-primary);
+      color: var(--text-primary);
+    }
+
+    .checkbox-label:has(input:checked) {
+      background: var(--accent-primary);
+      border-color: var(--accent-primary);
+      color: white;
+    }
+
+    .checkbox-label input {
+      display: none;
+    }
+
+    .hint {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: 12px;
+    }
+
+    /* Submit Button */
+    .submit-btn {
+      width: 100%;
+      padding: 14px 24px;
+      font-size: 15px;
+      font-weight: 600;
+      background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+      color: white;
+      border: none;
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      transition: all var(--transition-normal);
+      margin-top: 8px;
+    }
+
+    .submit-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg), 0 0 30px var(--accent-glow);
+    }
+
+    .submit-btn:active {
+      transform: translateY(0);
+    }
+
+    /* Task Details */
+    .details-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+    }
+
+    .details-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      margin-bottom: 24px;
+    }
+
+    .details-title {
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--text-primary);
+      line-height: 1.3;
+    }
+
+    .details-info {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .details-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .details-label {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+      min-width: 100px;
+    }
+
+    .details-value {
+      font-size: 15px;
+      color: var(--text-primary);
+    }
+
+    .details-actions {
+      display: flex;
+      gap: 12px;
+      margin-top: 32px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border-color);
+    }
+
+    /* All Tasks View */
+    .all-tasks-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 24px;
+    }
+
+    .view-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .task-count {
+      font-size: 13px;
+      color: var(--text-muted);
+      background: var(--bg-elevated);
+      padding: 6px 12px;
+      border-radius: var(--radius-sm);
+    }
+
+    /* Modal */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(4px);
+      z-index: 200;
+      align-items: center;
+      justify-content: center;
+      animation: fadeIn var(--transition-fast);
+    }
+
+    .modal-content {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      max-width: 440px;
+      width: 90%;
+      padding: 32px;
+      box-shadow: var(--shadow-lg);
+      animation: modalSlide var(--transition-normal);
+    }
+
+    @keyframes modalSlide {
+      from { opacity: 0; transform: scale(0.95) translateY(-20px); }
+      to { opacity: 1; transform: scale(1) translateY(0); }
+    }
+
+    .modal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+
+    .modal-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .modal-close {
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--bg-elevated);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      color: var(--text-muted);
+      transition: all var(--transition-fast);
+    }
+
+    .modal-close:hover {
+      background: var(--bg-card-hover);
+      color: var(--text-primary);
+    }
+
+    .modal-body {
+      color: var(--text-secondary);
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    .modal-body p + p {
+      margin-top: 16px;
+    }
+
+    .modal-body strong {
+      color: var(--text-primary);
+      font-weight: 600;
+    }
+
+    /* Empty State */
+    .empty-state {
+      text-align: center;
+      padding: 60px 24px;
+      background: var(--bg-card);
+      border: 1px dashed var(--border-color);
+      border-radius: var(--radius-lg);
+    }
+
+    .empty-icon {
+      width: 64px;
+      height: 64px;
+      margin: 0 auto 20px;
+      background: var(--accent-glow);
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent-primary);
+    }
+
+    .empty-title {
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 8px;
+    }
+
+    .empty-text {
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+
+    /* Responsive */
+    @media (max-width: 640px) {
+      .header-content {
+        padding: 12px 16px;
+      }
+
+      .container,
+      .nav-container {
+        padding: 16px;
+      }
+
+      .nav-tabs {
+        padding: 4px;
+      }
+
+      .tab {
+        padding: 10px 12px;
+        font-size: 13px;
+      }
+
+      .checkbox-grid,
+      .month-grid {
+        grid-template-columns: repeat(5, 1fr);
+      }
+
+      .form-card {
+        padding: 24px;
+      }
+
+      .task-item {
+        padding: 14px 16px;
+        gap: 12px;
+      }
+
+      .task-actions .btn {
+        padding: 6px 12px;
+        font-size: 12px;
+      }
+
+      .details-card {
+        padding: 24px;
+      }
+
+      .details-title {
+        font-size: 20px;
+      }
+
+      .details-actions {
+        flex-direction: column;
+      }
+
+      .details-actions .btn {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+
+    @media (max-width: 400px) {
+      .checkbox-grid,
+      .month-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+
+    /* Button group for form */
+    .form-buttons {
+      display: flex;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .form-buttons .btn {
+      flex: 1;
+      padding: 14px 24px;
+      font-size: 15px;
+    }
+
+    /* Delete button special styling */
+    .delete-btn {
+      padding: 14px 24px;
+      font-size: 15px;
+      font-weight: 600;
+      background: transparent;
+      color: var(--accent-danger);
+      border: 1px solid var(--accent-danger);
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      transition: all var(--transition-fast);
+    }
+
+    .delete-btn:hover {
+      background: var(--accent-danger);
+      color: white;
+    }
+
+    /* Cancel button */
+    .cancel-btn {
+      padding: 14px 24px;
+      font-size: 15px;
+      font-weight: 600;
+      background: var(--bg-elevated);
+      color: var(--text-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      transition: all var(--transition-fast);
+    }
+
+    .cancel-btn:hover {
+      background: var(--bg-card-hover);
+      color: var(--text-primary);
+      border-color: var(--border-hover);
+    }
+
+    /* Scrollbar styling */
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: var(--bg-secondary);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--bg-elevated);
+      border-radius: 4px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--border-hover);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-content">
+      <div class="logo">
+        <div class="logo-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12a9 9 0 1 1-9-9c2.52 0 4.93 1 6.74 2.74L21 8"/>
+            <path d="M21 3v5h-5"/>
+          </svg>
+        </div>
+        recurdo
+      </div>
+      <div class="hamburger-menu" style="position: relative;">
+        <button class="menu-btn hamburger-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="1"/>
+            <circle cx="12" cy="5" r="1"/>
+            <circle cx="12" cy="19" r="1"/>
+          </svg>
+        </button>
+        <div class="menu-dropdown">
+          <a href="#" id="about-app">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"/>
+              <path d="M12 16v-4"/>
+              <path d="M12 8h.01"/>
+            </svg>
+            About Recurdo
+          </a>
+          <a href="#" id="download-tasks">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+              <polyline points="7 10 12 15 17 10"/>
+              <line x1="12" y1="15" x2="12" y2="3"/>
+            </svg>
+            Export Tasks
+          </a>
+          <a href="#" id="upload-tasks">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+              <polyline points="17 8 12 3 7 8"/>
+              <line x1="12" y1="3" x2="12" y2="15"/>
+            </svg>
+            Import Tasks
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="nav-container">
+    <div class="nav-tabs">
+      <button class="tab active" data-view="today">Today</button>
+      <button class="tab" data-view="add">Add New</button>
+      <button class="tab" data-view="all">All Tasks</button>
+    </div>
+  </div>
+
+  <div class="container">
+    <!-- Today View -->
+    <div id="today-view" class="view">
+      <div class="status-message" id="today-status"></div>
+      <div class="task-list" id="today-tasks"></div>
+
+      <div class="upcoming-section">
+        <div class="section-header">
+          <span class="section-title">Upcoming (30 days)</span>
+        </div>
+        <div class="task-list" id="upcoming-tasks"></div>
+      </div>
+    </div>
+
+    <!-- Add View -->
+    <div id="add-view" class="view hidden">
+      <div class="form-card">
+        <div class="form-title">
+          <div class="form-title-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="12" y1="5" x2="12" y2="19"/>
+              <line x1="5" y1="12" x2="19" y2="12"/>
+            </svg>
+          </div>
+          New Recurring Task
+        </div>
+        <form id="task-form">
+          <div class="form-group">
+            <label class="form-label" for="task-title">Task Title</label>
+            <input type="text" id="task-title" class="form-input" placeholder="Enter task name..." required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="task-description">Description (optional)</label>
+            <textarea id="task-description" class="form-textarea" rows="3" placeholder="Add any notes or details..."></textarea>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="task-frequency">Frequency</label>
+            <select id="task-frequency" class="form-select" required>
+              <option value="">Select how often...</option>
+              <option value="daily">Daily</option>
+              <option value="weekly">Weekly</option>
+              <option value="monthly">Monthly</option>
+              <option value="quarterly">Quarterly</option>
+              <option value="yearly">Yearly</option>
+              <option value="custom_interval">Custom Interval</option>
+            </select>
+          </div>
+
+          <div id="daily-options" class="frequency-options"></div>
+
+          <div id="weekly-options" class="frequency-options">
+            <label>Select days of the week:</label>
+            <div class="checkbox-grid">
+              <label class="checkbox-label"><input type="checkbox" name="weekday" value="0">Sun</label>
+              <label class="checkbox-label"><input type="checkbox" name="weekday" value="1">Mon</label>
+              <label class="checkbox-label"><input type="checkbox" name="weekday" value="2">Tue</label>
+              <label class="checkbox-label"><input type="checkbox" name="weekday" value="3">Wed</label>
+              <label class="checkbox-label"><input type="checkbox" name="weekday" value="4">Thu</label>
+              <label class="checkbox-label"><input type="checkbox" name="weekday" value="5">Fri</label>
+              <label class="checkbox-label"><input type="checkbox" name="weekday" value="6">Sat</label>
             </div>
           </div>
-        `;upcomingTasksContainer.appendChild(taskItem);});},renderAllTasks:function(){const tasks=TaskStorage.getTasks();allTasks.innerHTML='';tasks.forEach(task=>{const taskElem=document.createElement('div');taskElem.className='task-item';taskElem.innerHTML=`
-          <div class="task-icon">❖</div>
-          <div class="task-content">
-            <a href="#" class="task-title" data-task-id="${task.id}">${task.title}</a>
-            <span class="task-frequency">${task.frequency}</span>
+
+          <div id="monthly-options" class="frequency-options">
+            <label>Select days of the month:</label>
+            <div class="month-grid" id="month-days-grid"></div>
           </div>
-        `;allTasks.appendChild(taskElem);});},createTaskItem:function(task,isCompleted){const taskItem=document.createElement('div');taskItem.className='task-item';taskItem.dataset.taskId=task.id;const buttonsHtml=isCompleted?`<button class="undo-btn">Undo</button>`:`<button class="done-btn">Done</button>`;taskItem.innerHTML=`
-        <div class="task-icon">${isCompleted ? '■' : '□'}</div>
-        <div class="task-content">
-          <a href="#" class="task-title ${isCompleted ? 'completed' : ''}" data-task-id="${task.id}">${task.title}</a>
-          <span class="task-frequency">${task.frequency}</span>
-          
+
+          <div id="quarterly-options" class="frequency-options">
+            <label>Select days of each quarter:</label>
+            <div class="month-grid" id="quarter-days-grid"></div>
+            <p class="hint">Days 1-90 represent each day within a quarter</p>
+          </div>
+
+          <div id="yearly-options" class="frequency-options">
+            <div class="form-group">
+              <label class="form-label" for="yearly-month">Month</label>
+              <select id="yearly-month" class="form-select">
+                <option value="0">January</option>
+                <option value="1">February</option>
+                <option value="2">March</option>
+                <option value="3">April</option>
+                <option value="4">May</option>
+                <option value="5">June</option>
+                <option value="6">July</option>
+                <option value="7">August</option>
+                <option value="8">September</option>
+                <option value="9">October</option>
+                <option value="10">November</option>
+                <option value="11">December</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="yearly-day">Day</label>
+              <select id="yearly-day" class="form-select"></select>
+            </div>
+          </div>
+
+          <div id="custom_interval-options" class="frequency-options">
+            <div class="form-group">
+              <label class="form-label" for="interval-days">Days between occurrences</label>
+              <input type="number" id="interval-days" class="form-input" min="1" value="7" placeholder="e.g., 7 for weekly">
+            </div>
+          </div>
+
+          <button type="submit" class="submit-btn">Create Task</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- All Tasks View -->
+    <div id="all-view" class="view hidden">
+      <div class="all-tasks-header">
+        <h2 class="view-title">All Tasks</h2>
+        <span class="task-count" id="task-count">0 tasks</span>
+      </div>
+      <div class="task-list" id="all-tasks"></div>
+    </div>
+
+    <!-- Edit View -->
+    <div id="edit-view" class="view hidden"></div>
+
+    <!-- Details View -->
+    <div id="details-view" class="view hidden"></div>
+  </div>
+
+  <!-- About Modal -->
+  <div class="modal-overlay" id="about-modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div class="modal-title">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12a9 9 0 1 1-9-9c2.52 0 4.93 1 6.74 2.74L21 8"/>
+            <path d="M21 3v5h-5"/>
+          </svg>
+          About Recurdo
         </div>
-        <div class="task-buttons">
-          ${buttonsHtml}
-        </div>
-      `;if(isCompleted){taskItem.querySelector('.undo-btn').addEventListener('click',()=>{TaskStorage.undoTaskComplete(task.id);this.renderTodayTasks();});}else{taskItem.querySelector('.done-btn').addEventListener('click',()=>{TaskStorage.markTaskComplete(task.id);this.renderTodayTasks();});}
-return taskItem;},renderTaskDetails:function(taskId){const task=TaskStorage.getTaskById(parseInt(taskId));if(!task){detailsView.innerHTML='<p>Task not found</p>';return;}
-let frequencyDetails='';switch(task.frequency){case'daily':frequencyDetails='Every day';break;case'weekly':const weekdayNames=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];const days=task.weekdays.map(d=>weekdayNames[parseInt(d)]);frequencyDetails=`Weekly on ${days.join(', ')}`;break;case'monthly':frequencyDetails=`Monthly on day(s) ${task.monthDays.join(', ')}`;break;case'quarterly':frequencyDetails=`Quarterly on day(s) ${task.quarterDays.join(', ')} of each quarter`;break;case'yearly':const monthNames=['January','February','March','April','May','June','July','August','September','October','November','December'];frequencyDetails=`Yearly on ${monthNames[parseInt(task.yearlyMonth)]} ${task.yearlyDay}`;break;case'custom_interval':frequencyDetails=`Every ${task.intervalDays} days`;break;}
-detailsView.innerHTML=`
-        <div class="task-details">
-          <h2>${task.title}</h2>
-          <p><strong>Frequency:</strong> ${frequencyDetails}</p>
-          ${task.description ? `<p><strong>Description:</strong>${task.description}</p>` : ''}
-          <p><strong>Created:</strong> ${new Date(task.createdAt).toLocaleDateString()}</p>
-          <a href="#" class="edit-link" data-task-id="${task.id}">Edit task</a>
-        </div>
-      `;detailsView.querySelector('.edit-link').addEventListener('click',(e)=>{e.preventDefault();this.showEditForm(task.id);});},showEditForm:function(taskId){const task=TaskStorage.getTaskById(parseInt(taskId));if(!task){editView.innerHTML='<p>Task not found</p>';return;}
-const addForm=document.querySelector('.add-task-form').cloneNode(true);addForm.querySelector('h2').textContent='Edit Task';const form=addForm.querySelector('form');form.id='edit-task-form';form.dataset.taskId=task.id;form.querySelector('#task-title').value=task.title;const descField=form.querySelector('#task-description');if(descField&&task.description){descField.value=task.description;}
-const freqSelect=form.querySelector('#task-frequency');freqSelect.value=task.frequency;switch(task.frequency){case'weekly':const weekdayCheckboxes=form.querySelectorAll('input[name="weekday"]');weekdayCheckboxes.forEach(cb=>{if(task.weekdays.includes(cb.value)){cb.checked=true;}});break;case'monthly':const monthDayCheckboxes=form.querySelectorAll('input[name="month-day"]');monthDayCheckboxes.forEach(cb=>{if(task.monthDays.includes(cb.value)){cb.checked=true;}});break;case'quarterly':const quarterDayCheckboxes=form.querySelectorAll('input[name="quarter-day"]');quarterDayCheckboxes.forEach(cb=>{if(task.quarterDays.includes(cb.value)){cb.checked=true;}});break;case'yearly':const monthSelect=form.querySelector('#yearly-month');monthSelect.value=task.yearlyMonth;updateYearlyDayOptions();const daySelect=form.querySelector('#yearly-day');daySelect.value=task.yearlyDay;break;case'custom_interval':form.querySelector('#interval-days').value=task.intervalDays;break;}
-form.querySelectorAll('.frequency-options').forEach(opt=>{opt.classList.remove('show');if(opt.id===`${task.frequency}-options`){opt.classList.add('show');}});const deleteBtn=document.createElement('button');deleteBtn.textContent='Delete Task';deleteBtn.className='delete-btn';deleteBtn.style.marginRight='10px';form.querySelector('.submit-btn').parentNode.insertBefore(deleteBtn,form.querySelector('.submit-btn'));const cancelBtn=document.createElement('button');cancelBtn.textContent='Cancel';cancelBtn.className='cancel-btn';cancelBtn.type='button';cancelBtn.style.marginRight='10px';form.querySelector('.submit-btn').parentNode.insertBefore(cancelBtn,form.querySelector('.submit-btn'));form.querySelector('.submit-btn').textContent='Save Changes';editView.innerHTML='';editView.appendChild(addForm);form.addEventListener('submit',this.handleEditFormSubmit.bind(this));form.querySelector('#task-frequency').addEventListener('change',function(){const selectedFreq=this.value;form.querySelectorAll('.frequency-options').forEach(opt=>{opt.classList.remove('show');});if(selectedFreq){form.querySelector(`#${selectedFreq}-options`).classList.add('show');}});const yearlyMonthSelect=form.querySelector('#yearly-month');if(yearlyMonthSelect){yearlyMonthSelect.addEventListener('change',function(){const yearlyDaySelect=form.querySelector('#yearly-day');const month=parseInt(this.value);const daysInMonth=new Date(new Date().getFullYear(),month+1,0).getDate();yearlyDaySelect.innerHTML='';for(let i=1;i<=daysInMonth;i++){const option=document.createElement('option');option.value=i;option.textContent=i;yearlyDaySelect.appendChild(option);}});}
-deleteBtn.addEventListener('click',(e)=>{e.preventDefault();if(confirm('Are you sure you want to delete this task?')){TaskStorage.deleteTask(parseInt(task.id));setActiveView('all');this.renderAllTasks();this.renderTodayTasks();}});cancelBtn.addEventListener('click',(e)=>{e.preventDefault();setActiveView('all');});setActiveView('edit');},handleEditFormSubmit:function(e){e.preventDefault();const form=e.target;const taskId=parseInt(form.dataset.taskId);const task=TaskStorage.getTaskById(taskId);if(!task){alert('Task not found');return;}
-const title=form.querySelector('#task-title').value;const description=form.querySelector('#task-description').value;const frequency=form.querySelector('#task-frequency').value;const updatedTask={...task,title,description,frequency};switch(frequency){case'weekly':const weekdays=[];form.querySelectorAll('input[name="weekday"]:checked').forEach(cb=>{weekdays.push(cb.value);});if(weekdays.length===0){alert('Please select at least one day of the week.');return;}
-updatedTask.weekdays=weekdays;break;case'monthly':const monthDays=[];form.querySelectorAll('input[name="month-day"]:checked').forEach(cb=>{monthDays.push(cb.value);});if(monthDays.length===0){alert('Please select at least one day of the month.');return;}
-updatedTask.monthDays=monthDays;break;case'quarterly':const quarterDays=[];form.querySelectorAll('input[name="quarter-day"]:checked').forEach(cb=>{quarterDays.push(cb.value);});if(quarterDays.length===0){alert('Please select at least one day of the quarter.');return;}
-updatedTask.quarterDays=quarterDays;break;case'yearly':updatedTask.yearlyMonth=form.querySelector('#yearly-month').value;updatedTask.yearlyDay=form.querySelector('#yearly-day').value;break;case'custom_interval':const intervalDays=parseInt(form.querySelector('#interval-days').value);if(intervalDays<1){alert('Please enter a valid interval (minimum 1 day).');return;}
-updatedTask.intervalDays=intervalDays;break;}
-if(TaskStorage.updateTask(updatedTask)){this.renderAllTasks();this.renderTodayTasks();this.renderTaskDetails(taskId);setActiveView('details');}else{alert('Failed to update task');}},handleNewTaskSubmit:function(e){e.preventDefault();const form=e.target;const title=form.querySelector('#task-title').value;const description=form.querySelector('#task-description').value;const frequency=form.querySelector('#task-frequency').value;if(!title||!frequency){alert('Please fill out all required fields');return;}
-const task={title,description,frequency};switch(frequency){case'daily':break;case'weekly':const weekdays=[];form.querySelectorAll('input[name="weekday"]:checked').forEach(cb=>{weekdays.push(cb.value);});if(weekdays.length===0){alert('Please select at least one day of the week.');return;}
-task.weekdays=weekdays;break;case'monthly':const monthDays=[];form.querySelectorAll('input[name="month-day"]:checked').forEach(cb=>{monthDays.push(cb.value);});if(monthDays.length===0){alert('Please select at least one day of the month.');return;}
-task.monthDays=monthDays;break;case'quarterly':const quarterDays=[];form.querySelectorAll('input[name="quarter-day"]:checked').forEach(cb=>{quarterDays.push(cb.value);});if(quarterDays.length===0){alert('Please select at least one day of the quarter.');return;}
-task.quarterDays=quarterDays;break;case'yearly':task.yearlyMonth=form.querySelector('#yearly-month').value;task.yearlyDay=form.querySelector('#yearly-day').value;break;case'custom_interval':const intervalDays=parseInt(form.querySelector('#interval-days').value);if(intervalDays<1){alert('Please enter a valid interval (minimum 1 day).');return;}
-task.intervalDays=intervalDays;break;}
-TaskStorage.saveTask(task);form.reset();form.querySelectorAll('.frequency-options').forEach(opt=>{opt.classList.remove('show');});setActiveView('today');this.renderTodayTasks();this.renderAllTasks();}};initMonthDaysGrid();initQuarterDaysGrid();updateYearlyDayOptions();yearlyMonth.addEventListener('change',updateYearlyDayOptions);function setActiveView(viewName){for(let i=0;i<tabs.length;i++){const tab=tabs[i];if(tab.dataset.view===viewName){tab.classList.add('active');}else{tab.classList.remove('active');}}
-for(let i=0;i<views.length;i++){const view=views[i];if(view.id===`${viewName}-view`){view.classList.remove('hidden');}else{view.classList.add('hidden');}}
-if(viewName==='today'){TaskManager.renderUpcomingTasks(30);}}
-tabs.forEach(function(tab){tab.addEventListener('click',function(){const viewName=tab.dataset.view;setActiveView(viewName);if(viewName==='today'){TaskManager.renderTodayTasks();}else if(viewName==='all'){TaskManager.renderAllTasks();}});});taskFrequency.addEventListener('change',function(){const selectedFreq=this.value;frequencyOptions.forEach(opt=>{opt.classList.remove('show');});if(selectedFreq){const optionsElement=document.getElementById(`${selectedFreq}-options`);if(optionsElement){optionsElement.classList.add('show');}}});taskForm.addEventListener('submit',(e)=>{TaskManager.handleNewTaskSubmit(e);});todayTasks.addEventListener('click',(e)=>{if(e.target.classList.contains('task-title')){e.preventDefault();const taskId=e.target.dataset.taskId;TaskManager.renderTaskDetails(taskId);setActiveView('details');}});const upcomingTasks=document.getElementById('upcoming-tasks');upcomingTasks.addEventListener('click',(e)=>{if(e.target.classList.contains('task-title')){e.preventDefault();const taskId=e.target.dataset.taskId;TaskManager.renderTaskDetails(taskId);setActiveView('details');}});allTasks.addEventListener('click',(e)=>{if(e.target.classList.contains('task-title')){e.preventDefault();const taskId=e.target.dataset.taskId;TaskManager.renderTaskDetails(taskId);setActiveView('details');}});TaskManager.renderTodayTasks();TaskManager.renderAllTasks();});</script></body></html>
+        <button class="modal-close">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"/>
+            <line x1="6" y1="6" x2="18" y2="18"/>
+          </svg>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p><strong>Recurdo</strong> is a minimal task tracker designed exclusively for recurring tasks.</p>
+        <p>Perfect for habit building, tracking odd schedules, or remembering your neighbor's cat's birthday (if you're so inclined).</p>
+        <p>Your data stays private. Nothing leaves your browser. All your tasks are stored locally.</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // DOM Elements
+      const tabs = document.querySelectorAll('.tab');
+      const views = document.querySelectorAll('.view');
+      const taskForm = document.getElementById('task-form');
+      const taskFrequency = document.getElementById('task-frequency');
+      const frequencyOptions = document.querySelectorAll('.frequency-options');
+      const todayTasks = document.getElementById('today-tasks');
+      const allTasks = document.getElementById('all-tasks');
+      const todayStatus = document.getElementById('today-status');
+      const yearlyMonth = document.getElementById('yearly-month');
+      const yearlyDay = document.getElementById('yearly-day');
+      const editView = document.getElementById('edit-view');
+      const detailsView = document.getElementById('details-view');
+      const monthDaysGrid = document.getElementById('month-days-grid');
+      const quarterDaysGrid = document.getElementById('quarter-days-grid');
+      const hamburgerIcon = document.querySelector('.hamburger-icon');
+      const menuDropdown = document.querySelector('.menu-dropdown');
+      const downloadTasksLink = document.getElementById('download-tasks');
+      const uploadTasksLink = document.getElementById('upload-tasks');
+      const aboutAppLink = document.getElementById('about-app');
+      const aboutModal = document.getElementById('about-modal');
+      const modalClose = document.querySelector('.modal-close');
+      const taskCountEl = document.getElementById('task-count');
+
+      // Menu Toggle
+      hamburgerIcon.addEventListener('click', function(e) {
+        e.stopPropagation();
+        menuDropdown.classList.toggle('show-menu');
+      });
+
+      window.addEventListener('click', function(e) {
+        if (!e.target.closest('.hamburger-menu')) {
+          menuDropdown.classList.remove('show-menu');
+        }
+      });
+
+      // Download Tasks
+      downloadTasksLink.addEventListener('click', function(e) {
+        e.preventDefault();
+        const tasks = localStorage.getItem('recurdo-tasks') || '[]';
+        const history = localStorage.getItem('recurdo-history') || '{}';
+        const exportData = {
+          tasks: JSON.parse(tasks),
+          history: JSON.parse(history),
+          exportDate: new Date().toISOString()
+        };
+        const dataStr = JSON.stringify(exportData, null, 2);
+        const dataUri = 'data:application/json;charset=utf-8,' + encodeURIComponent(dataStr);
+        const exportFileDefaultName = 'recurdo-backup.json';
+        const linkElement = document.createElement('a');
+        linkElement.setAttribute('href', dataUri);
+        linkElement.setAttribute('download', exportFileDefaultName);
+        linkElement.click();
+        menuDropdown.classList.remove('show-menu');
+      });
+
+      // Upload Tasks
+      uploadTasksLink.addEventListener('click', function(e) {
+        e.preventDefault();
+        const fileInput = document.createElement('input');
+        fileInput.type = 'file';
+        fileInput.accept = '.recurdo,.json,application/json';
+        fileInput.addEventListener('change', function(e) {
+          const file = e.target.files[0];
+          if (!file) return;
+          const reader = new FileReader();
+          reader.onload = function(e) {
+            try {
+              const data = JSON.parse(e.target.result);
+              if (!data.tasks || !Array.isArray(data.tasks)) {
+                throw new Error('Invalid tasks data format');
+              }
+              if (confirm('This will replace your current tasks. Continue?')) {
+                localStorage.setItem('recurdo-tasks', JSON.stringify(data.tasks));
+                if (data.history && typeof data.history === 'object') {
+                  localStorage.setItem('recurdo-history', JSON.stringify(data.history));
+                }
+                TaskManager.renderAllTasks();
+                TaskManager.renderTodayTasks();
+                alert('Tasks imported successfully!');
+              }
+            } catch (error) {
+              alert('Error importing file: ' + error.message);
+            }
+          };
+          reader.readAsText(file);
+        });
+        fileInput.click();
+        menuDropdown.classList.remove('show-menu');
+      });
+
+      // About Modal
+      aboutAppLink.addEventListener('click', function(e) {
+        e.preventDefault();
+        aboutModal.style.display = 'flex';
+        menuDropdown.classList.remove('show-menu');
+      });
+
+      modalClose.addEventListener('click', function() {
+        aboutModal.style.display = 'none';
+      });
+
+      aboutModal.addEventListener('click', function(e) {
+        if (e.target === aboutModal) {
+          aboutModal.style.display = 'none';
+        }
+      });
+
+      // Initialize Grids
+      function initMonthDaysGrid() {
+        monthDaysGrid.innerHTML = '';
+        for (let i = 1; i <= 31; i++) {
+          const label = document.createElement('label');
+          label.className = 'checkbox-label';
+          label.innerHTML = `<input type="checkbox" name="month-day" value="${i}">${i}`;
+          monthDaysGrid.appendChild(label);
+        }
+      }
+
+      function initQuarterDaysGrid() {
+        quarterDaysGrid.innerHTML = '';
+        for (let i = 1; i <= 90; i++) {
+          const label = document.createElement('label');
+          label.className = 'checkbox-label';
+          label.innerHTML = `<input type="checkbox" name="quarter-day" value="${i}">${i}`;
+          quarterDaysGrid.appendChild(label);
+        }
+      }
+
+      function updateYearlyDayOptions() {
+        const month = parseInt(yearlyMonth.value);
+        const daysInMonth = new Date(new Date().getFullYear(), month + 1, 0).getDate();
+        yearlyDay.innerHTML = '';
+        for (let i = 1; i <= daysInMonth; i++) {
+          const option = document.createElement('option');
+          option.value = i;
+          option.textContent = i;
+          yearlyDay.appendChild(option);
+        }
+      }
+
+      // Task Storage
+      const TaskStorage = {
+        getTasks: function() {
+          const tasks = localStorage.getItem('recurdo-tasks');
+          return tasks ? JSON.parse(tasks) : [];
+        },
+
+        saveTask: function(task) {
+          const tasks = this.getTasks();
+          task.id = Date.now();
+          task.createdAt = new Date().toISOString();
+          tasks.push(task);
+          localStorage.setItem('recurdo-tasks', JSON.stringify(tasks));
+          return task;
+        },
+
+        updateTask: function(updatedTask) {
+          const tasks = this.getTasks();
+          const index = tasks.findIndex(task => task.id === updatedTask.id);
+          if (index !== -1) {
+            tasks[index] = updatedTask;
+            localStorage.setItem('recurdo-tasks', JSON.stringify(tasks));
+            return true;
+          }
+          return false;
+        },
+
+        deleteTask: function(taskId) {
+          let tasks = this.getTasks();
+          tasks = tasks.filter(task => task.id !== taskId);
+          localStorage.setItem('recurdo-tasks', JSON.stringify(tasks));
+        },
+
+        getTaskById: function(taskId) {
+          const tasks = this.getTasks();
+          return tasks.find(task => task.id === taskId);
+        },
+
+        getCompletionHistory: function() {
+          const history = localStorage.getItem('recurdo-history');
+          return history ? JSON.parse(history) : {};
+        },
+
+        markTaskComplete: function(taskId, date) {
+          const dateKey = date || new Date().toISOString().split('T')[0];
+          const history = this.getCompletionHistory();
+          if (!history[dateKey]) {
+            history[dateKey] = [];
+          }
+          if (!history[dateKey].includes(taskId)) {
+            history[dateKey].push(taskId);
+            localStorage.setItem('recurdo-history', JSON.stringify(history));
+            return true;
+          }
+          return false;
+        },
+
+        undoTaskComplete: function(taskId, date) {
+          const dateKey = date || new Date().toISOString().split('T')[0];
+          const history = this.getCompletionHistory();
+          if (history[dateKey] && history[dateKey].includes(taskId)) {
+            history[dateKey] = history[dateKey].filter(id => id !== taskId);
+            localStorage.setItem('recurdo-history', JSON.stringify(history));
+            return true;
+          }
+          return false;
+        },
+
+        isTaskCompleted: function(taskId, date) {
+          const dateKey = date || new Date().toISOString().split('T')[0];
+          const history = this.getCompletionHistory();
+          return history[dateKey] && history[dateKey].includes(taskId);
+        }
+      };
+
+      // Date Utilities
+      const DateUtils = {
+        formatDate: function(date) {
+          const d = new Date(date);
+          return d.toISOString().split('T')[0];
+        },
+
+        today: function() {
+          return this.formatDate(new Date());
+        },
+
+        getDayOfQuarter: function(date) {
+          const d = new Date(date);
+          const month = d.getMonth();
+          const quarter = Math.floor(month / 3);
+          const firstMonthOfQuarter = quarter * 3;
+          const firstDayOfQuarter = new Date(d.getFullYear(), firstMonthOfQuarter, 1);
+          const diffTime = d.getTime() - firstDayOfQuarter.getTime();
+          const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24)) + 1;
+          return diffDays;
+        },
+
+        shouldTaskBeActiveOnDate: function(task, dateStr) {
+          const date = new Date(dateStr);
+          const dayOfWeek = date.getDay();
+          const dayOfMonth = date.getDate();
+          const month = date.getMonth();
+          const dayOfQuarter = this.getDayOfQuarter(date);
+
+          switch(task.frequency) {
+            case 'daily':
+              return true;
+            case 'weekly':
+              return task.weekdays.includes(dayOfWeek.toString());
+            case 'monthly':
+              return task.monthDays.includes(dayOfMonth.toString());
+            case 'quarterly':
+              return task.quarterDays.includes(dayOfQuarter.toString());
+            case 'yearly':
+              return month === parseInt(task.yearlyMonth) && dayOfMonth === parseInt(task.yearlyDay);
+            case 'custom_interval':
+              const taskCreated = new Date(task.createdAt);
+              const diffTime = date.getTime() - taskCreated.getTime();
+              const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+              return diffDays % task.intervalDays === 0;
+            default:
+              return false;
+          }
+        }
+      };
+
+      // Task Manager
+      const TaskManager = {
+        getTasksForDate: function(dateStr) {
+          const allTasks = TaskStorage.getTasks();
+          return allTasks.filter(task => DateUtils.shouldTaskBeActiveOnDate(task, dateStr));
+        },
+
+        getTodayTasks: function() {
+          return this.getTasksForDate(DateUtils.today());
+        },
+
+        renderTodayTasks: function() {
+          const tasks = this.getTodayTasks();
+          todayTasks.innerHTML = '';
+
+          if (tasks.length === 0) {
+            todayStatus.innerHTML = `
+              <div class="empty-state">
+                <div class="empty-icon">
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2z"/>
+                    <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+                    <line x1="9" y1="9" x2="9.01" y2="9"/>
+                    <line x1="15" y1="9" x2="15.01" y2="9"/>
+                  </svg>
+                </div>
+                <div class="empty-title">No tasks for today</div>
+                <div class="empty-text">Enjoy the peace, or add a new recurring task</div>
+              </div>
+            `;
+            todayStatus.className = 'status-message empty';
+            return;
+          }
+
+          const completedTasks = tasks.filter(task => TaskStorage.isTaskCompleted(task.id, DateUtils.today()));
+          const pendingCount = tasks.length - completedTasks.length;
+
+          if (pendingCount === 0 && tasks.length > 0) {
+            todayStatus.innerHTML = `
+              <div class="empty-icon">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--accent-success)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                  <polyline points="22 4 12 14.01 9 11.01"/>
+                </svg>
+              </div>
+              <div class="empty-title" style="color: var(--accent-success)">All done for today!</div>
+              <div class="empty-text">You've completed all ${tasks.length} tasks</div>
+            `;
+          } else {
+            todayStatus.innerHTML = `<span class="status-highlight">${pendingCount}</span> of <span class="status-highlight">${tasks.length}</span> tasks remaining`;
+          }
+          todayStatus.className = 'status-message';
+
+          tasks.forEach(task => {
+            const isCompleted = TaskStorage.isTaskCompleted(task.id, DateUtils.today());
+            const taskItem = this.createTaskItem(task, isCompleted);
+            todayTasks.appendChild(taskItem);
+          });
+
+          this.renderUpcomingTasks(30);
+        },
+
+        renderUpcomingTasks: function(daysToShow) {
+          const upcomingTasksContainer = document.getElementById('upcoming-tasks');
+          upcomingTasksContainer.innerHTML = '';
+
+          const today = new Date();
+          today.setHours(0, 0, 0, 0);
+
+          const allTasksList = TaskStorage.getTasks();
+          const taskOccurrences = {};
+          const taskFirstDate = {};
+
+          for (let i = 1; i <= daysToShow; i++) {
+            const futureDate = new Date(today);
+            futureDate.setDate(today.getDate() + i);
+            const dateStr = DateUtils.formatDate(futureDate);
+
+            allTasksList.forEach(task => {
+              if (DateUtils.shouldTaskBeActiveOnDate(task, dateStr)) {
+                if (!taskOccurrences[task.id]) {
+                  taskOccurrences[task.id] = 0;
+                  taskFirstDate[task.id] = dateStr;
+                }
+                taskOccurrences[task.id]++;
+              }
+            });
+          }
+
+          if (Object.keys(taskOccurrences).length === 0) {
+            upcomingTasksContainer.innerHTML = `
+              <div class="empty-state" style="padding: 40px 24px;">
+                <div class="empty-text">No upcoming tasks in the next ${daysToShow} days</div>
+              </div>
+            `;
+            return;
+          }
+
+          const upcomingTasks = Object.keys(taskOccurrences).map(taskId => {
+            const task = allTasksList.find(t => t.id === parseInt(taskId));
+            const count = taskOccurrences[taskId];
+            const firstDate = new Date(taskFirstDate[taskId]);
+            return { task, count, firstDate };
+          });
+
+          upcomingTasks.sort((a, b) => a.firstDate - b.firstDate);
+
+          upcomingTasks.forEach(item => {
+            const taskItem = document.createElement('div');
+            taskItem.className = 'upcoming-item';
+            const formattedDate = item.firstDate.toLocaleDateString(undefined, {
+              weekday: 'short',
+              month: 'short',
+              day: 'numeric'
+            });
+
+            taskItem.innerHTML = `
+              <div class="upcoming-dot"></div>
+              <div class="task-content">
+                <a href="#" class="task-title" data-task-id="${item.task.id}">${item.task.title}</a>
+                <div class="task-meta">
+                  <span class="task-frequency">${item.task.frequency}</span>
+                  ${item.count > 1 ? `<span class="upcoming-count">${item.count}x in ${daysToShow} days</span>` : ''}
+                </div>
+              </div>
+              <div class="upcoming-date">${formattedDate}</div>
+            `;
+            upcomingTasksContainer.appendChild(taskItem);
+          });
+        },
+
+        renderAllTasks: function() {
+          const tasks = TaskStorage.getTasks();
+          allTasks.innerHTML = '';
+          taskCountEl.textContent = `${tasks.length} task${tasks.length !== 1 ? 's' : ''}`;
+
+          if (tasks.length === 0) {
+            allTasks.innerHTML = `
+              <div class="empty-state">
+                <div class="empty-icon">
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                    <line x1="12" y1="8" x2="12" y2="16"/>
+                    <line x1="8" y1="12" x2="16" y2="12"/>
+                  </svg>
+                </div>
+                <div class="empty-title">No tasks yet</div>
+                <div class="empty-text">Create your first recurring task to get started</div>
+              </div>
+            `;
+            return;
+          }
+
+          tasks.forEach(task => {
+            const taskElem = document.createElement('div');
+            taskElem.className = 'task-item';
+            taskElem.innerHTML = `
+              <div class="upcoming-dot"></div>
+              <div class="task-content">
+                <a href="#" class="task-title" data-task-id="${task.id}">${task.title}</a>
+                <div class="task-meta">
+                  <span class="task-frequency">${task.frequency}</span>
+                </div>
+              </div>
+            `;
+            allTasks.appendChild(taskElem);
+          });
+        },
+
+        createTaskItem: function(task, isCompleted) {
+          const taskItem = document.createElement('div');
+          taskItem.className = 'task-item' + (isCompleted ? ' completed' : '');
+          taskItem.dataset.taskId = task.id;
+
+          const checkIcon = isCompleted
+            ? '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>'
+            : '';
+
+          const buttonHtml = isCompleted
+            ? `<button class="btn btn-ghost undo-btn">Undo</button>`
+            : `<button class="btn btn-success done-btn">Done</button>`;
+
+          taskItem.innerHTML = `
+            <div class="task-checkbox">${checkIcon}</div>
+            <div class="task-content">
+              <a href="#" class="task-title" data-task-id="${task.id}">${task.title}</a>
+              <div class="task-meta">
+                <span class="task-frequency">${task.frequency}</span>
+              </div>
+            </div>
+            <div class="task-actions">${buttonHtml}</div>
+          `;
+
+          if (isCompleted) {
+            taskItem.querySelector('.undo-btn').addEventListener('click', () => {
+              TaskStorage.undoTaskComplete(task.id);
+              this.renderTodayTasks();
+            });
+          } else {
+            taskItem.querySelector('.done-btn').addEventListener('click', () => {
+              TaskStorage.markTaskComplete(task.id);
+              this.renderTodayTasks();
+            });
+          }
+
+          return taskItem;
+        },
+
+        renderTaskDetails: function(taskId) {
+          const task = TaskStorage.getTaskById(parseInt(taskId));
+          if (!task) {
+            detailsView.innerHTML = '<p>Task not found</p>';
+            return;
+          }
+
+          let frequencyDetails = '';
+          switch(task.frequency) {
+            case 'daily':
+              frequencyDetails = 'Every day';
+              break;
+            case 'weekly':
+              const weekdayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+              const days = task.weekdays.map(d => weekdayNames[parseInt(d)]);
+              frequencyDetails = `Weekly on ${days.join(', ')}`;
+              break;
+            case 'monthly':
+              frequencyDetails = `Monthly on day${task.monthDays.length > 1 ? 's' : ''} ${task.monthDays.join(', ')}`;
+              break;
+            case 'quarterly':
+              frequencyDetails = `Quarterly on day${task.quarterDays.length > 1 ? 's' : ''} ${task.quarterDays.join(', ')}`;
+              break;
+            case 'yearly':
+              const monthNames = ['January', 'February', 'March', 'April', 'May', 'June',
+                                  'July', 'August', 'September', 'October', 'November', 'December'];
+              frequencyDetails = `Yearly on ${monthNames[parseInt(task.yearlyMonth)]} ${task.yearlyDay}`;
+              break;
+            case 'custom_interval':
+              frequencyDetails = `Every ${task.intervalDays} day${task.intervalDays > 1 ? 's' : ''}`;
+              break;
+          }
+
+          detailsView.innerHTML = `
+            <div class="details-card">
+              <div class="details-header">
+                <h2 class="details-title">${task.title}</h2>
+              </div>
+              <div class="details-info">
+                <div class="details-row">
+                  <span class="details-label">Frequency</span>
+                  <span class="details-value">${frequencyDetails}</span>
+                </div>
+                ${task.description ? `
+                <div class="details-row">
+                  <span class="details-label">Description</span>
+                  <span class="details-value">${task.description}</span>
+                </div>
+                ` : ''}
+                <div class="details-row">
+                  <span class="details-label">Created</span>
+                  <span class="details-value">${new Date(task.createdAt).toLocaleDateString()}</span>
+                </div>
+              </div>
+              <div class="details-actions">
+                <button class="btn btn-primary edit-btn" data-task-id="${task.id}">Edit Task</button>
+                <button class="btn btn-ghost back-btn">Back</button>
+              </div>
+            </div>
+          `;
+
+          detailsView.querySelector('.edit-btn').addEventListener('click', (e) => {
+            this.showEditForm(task.id);
+          });
+
+          detailsView.querySelector('.back-btn').addEventListener('click', () => {
+            setActiveView('all');
+          });
+        },
+
+        showEditForm: function(taskId) {
+          const task = TaskStorage.getTaskById(parseInt(taskId));
+          if (!task) {
+            editView.innerHTML = '<p>Task not found</p>';
+            return;
+          }
+
+          editView.innerHTML = `
+            <div class="form-card">
+              <div class="form-title">
+                <div class="form-title-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
+                    <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
+                  </svg>
+                </div>
+                Edit Task
+              </div>
+              <form id="edit-task-form" data-task-id="${task.id}">
+                <div class="form-group">
+                  <label class="form-label" for="edit-task-title">Task Title</label>
+                  <input type="text" id="edit-task-title" class="form-input" value="${task.title}" required>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="edit-task-description">Description</label>
+                  <textarea id="edit-task-description" class="form-textarea" rows="3">${task.description || ''}</textarea>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="edit-task-frequency">Frequency</label>
+                  <select id="edit-task-frequency" class="form-select" required>
+                    <option value="daily" ${task.frequency === 'daily' ? 'selected' : ''}>Daily</option>
+                    <option value="weekly" ${task.frequency === 'weekly' ? 'selected' : ''}>Weekly</option>
+                    <option value="monthly" ${task.frequency === 'monthly' ? 'selected' : ''}>Monthly</option>
+                    <option value="quarterly" ${task.frequency === 'quarterly' ? 'selected' : ''}>Quarterly</option>
+                    <option value="yearly" ${task.frequency === 'yearly' ? 'selected' : ''}>Yearly</option>
+                    <option value="custom_interval" ${task.frequency === 'custom_interval' ? 'selected' : ''}>Custom Interval</option>
+                  </select>
+                </div>
+
+                <div id="edit-daily-options" class="frequency-options ${task.frequency === 'daily' ? 'show' : ''}"></div>
+
+                <div id="edit-weekly-options" class="frequency-options ${task.frequency === 'weekly' ? 'show' : ''}">
+                  <label>Select days of the week:</label>
+                  <div class="checkbox-grid">
+                    ${['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map((day, i) => `
+                      <label class="checkbox-label">
+                        <input type="checkbox" name="edit-weekday" value="${i}" ${task.weekdays && task.weekdays.includes(i.toString()) ? 'checked' : ''}>
+                        ${day}
+                      </label>
+                    `).join('')}
+                  </div>
+                </div>
+
+                <div id="edit-monthly-options" class="frequency-options ${task.frequency === 'monthly' ? 'show' : ''}">
+                  <label>Select days of the month:</label>
+                  <div class="month-grid" id="edit-month-days-grid"></div>
+                </div>
+
+                <div id="edit-quarterly-options" class="frequency-options ${task.frequency === 'quarterly' ? 'show' : ''}">
+                  <label>Select days of each quarter:</label>
+                  <div class="month-grid" id="edit-quarter-days-grid"></div>
+                  <p class="hint">Days 1-90 represent each day within a quarter</p>
+                </div>
+
+                <div id="edit-yearly-options" class="frequency-options ${task.frequency === 'yearly' ? 'show' : ''}">
+                  <div class="form-group">
+                    <label class="form-label" for="edit-yearly-month">Month</label>
+                    <select id="edit-yearly-month" class="form-select">
+                      ${['January', 'February', 'March', 'April', 'May', 'June',
+                         'July', 'August', 'September', 'October', 'November', 'December'].map((month, i) => `
+                        <option value="${i}" ${task.yearlyMonth == i ? 'selected' : ''}>${month}</option>
+                      `).join('')}
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label" for="edit-yearly-day">Day</label>
+                    <select id="edit-yearly-day" class="form-select"></select>
+                  </div>
+                </div>
+
+                <div id="edit-custom_interval-options" class="frequency-options ${task.frequency === 'custom_interval' ? 'show' : ''}">
+                  <div class="form-group">
+                    <label class="form-label" for="edit-interval-days">Days between occurrences</label>
+                    <input type="number" id="edit-interval-days" class="form-input" min="1" value="${task.intervalDays || 7}">
+                  </div>
+                </div>
+
+                <div class="form-buttons">
+                  <button type="button" class="delete-btn">Delete</button>
+                  <button type="button" class="cancel-btn">Cancel</button>
+                  <button type="submit" class="submit-btn" style="flex: 2;">Save Changes</button>
+                </div>
+              </form>
+            </div>
+          `;
+
+          // Initialize month days grid for edit form
+          const editMonthGrid = document.getElementById('edit-month-days-grid');
+          for (let i = 1; i <= 31; i++) {
+            const label = document.createElement('label');
+            label.className = 'checkbox-label';
+            label.innerHTML = `<input type="checkbox" name="edit-month-day" value="${i}" ${task.monthDays && task.monthDays.includes(i.toString()) ? 'checked' : ''}>${i}`;
+            editMonthGrid.appendChild(label);
+          }
+
+          // Initialize quarter days grid for edit form
+          const editQuarterGrid = document.getElementById('edit-quarter-days-grid');
+          for (let i = 1; i <= 90; i++) {
+            const label = document.createElement('label');
+            label.className = 'checkbox-label';
+            label.innerHTML = `<input type="checkbox" name="edit-quarter-day" value="${i}" ${task.quarterDays && task.quarterDays.includes(i.toString()) ? 'checked' : ''}>${i}`;
+            editQuarterGrid.appendChild(label);
+          }
+
+          // Initialize yearly day select
+          const editYearlyMonth = document.getElementById('edit-yearly-month');
+          const editYearlyDay = document.getElementById('edit-yearly-day');
+
+          function updateEditYearlyDays() {
+            const month = parseInt(editYearlyMonth.value);
+            const daysInMonth = new Date(new Date().getFullYear(), month + 1, 0).getDate();
+            editYearlyDay.innerHTML = '';
+            for (let i = 1; i <= daysInMonth; i++) {
+              const option = document.createElement('option');
+              option.value = i;
+              option.textContent = i;
+              if (task.yearlyDay == i) option.selected = true;
+              editYearlyDay.appendChild(option);
+            }
+          }
+
+          updateEditYearlyDays();
+          editYearlyMonth.addEventListener('change', updateEditYearlyDays);
+
+          // Frequency change handler
+          const editFrequency = document.getElementById('edit-task-frequency');
+          editFrequency.addEventListener('change', function() {
+            editView.querySelectorAll('.frequency-options').forEach(opt => opt.classList.remove('show'));
+            const selected = this.value;
+            if (selected) {
+              document.getElementById(`edit-${selected}-options`).classList.add('show');
+            }
+          });
+
+          // Delete button
+          editView.querySelector('.delete-btn').addEventListener('click', () => {
+            if (confirm('Are you sure you want to delete this task?')) {
+              TaskStorage.deleteTask(parseInt(task.id));
+              setActiveView('all');
+              this.renderAllTasks();
+              this.renderTodayTasks();
+            }
+          });
+
+          // Cancel button
+          editView.querySelector('.cancel-btn').addEventListener('click', () => {
+            setActiveView('all');
+          });
+
+          // Form submit
+          document.getElementById('edit-task-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            this.handleEditFormSubmit(e);
+          });
+
+          setActiveView('edit');
+        },
+
+        handleEditFormSubmit: function(e) {
+          const form = e.target;
+          const taskId = parseInt(form.dataset.taskId);
+          const task = TaskStorage.getTaskById(taskId);
+
+          if (!task) {
+            alert('Task not found');
+            return;
+          }
+
+          const title = form.querySelector('#edit-task-title').value;
+          const description = form.querySelector('#edit-task-description').value;
+          const frequency = form.querySelector('#edit-task-frequency').value;
+
+          const updatedTask = { ...task, title, description, frequency };
+
+          switch(frequency) {
+            case 'weekly':
+              const weekdays = [];
+              form.querySelectorAll('input[name="edit-weekday"]:checked').forEach(cb => weekdays.push(cb.value));
+              if (weekdays.length === 0) {
+                alert('Please select at least one day of the week.');
+                return;
+              }
+              updatedTask.weekdays = weekdays;
+              break;
+            case 'monthly':
+              const monthDays = [];
+              form.querySelectorAll('input[name="edit-month-day"]:checked').forEach(cb => monthDays.push(cb.value));
+              if (monthDays.length === 0) {
+                alert('Please select at least one day of the month.');
+                return;
+              }
+              updatedTask.monthDays = monthDays;
+              break;
+            case 'quarterly':
+              const quarterDays = [];
+              form.querySelectorAll('input[name="edit-quarter-day"]:checked').forEach(cb => quarterDays.push(cb.value));
+              if (quarterDays.length === 0) {
+                alert('Please select at least one day of the quarter.');
+                return;
+              }
+              updatedTask.quarterDays = quarterDays;
+              break;
+            case 'yearly':
+              updatedTask.yearlyMonth = form.querySelector('#edit-yearly-month').value;
+              updatedTask.yearlyDay = form.querySelector('#edit-yearly-day').value;
+              break;
+            case 'custom_interval':
+              const intervalDays = parseInt(form.querySelector('#edit-interval-days').value);
+              if (intervalDays < 1) {
+                alert('Please enter a valid interval (minimum 1 day).');
+                return;
+              }
+              updatedTask.intervalDays = intervalDays;
+              break;
+          }
+
+          if (TaskStorage.updateTask(updatedTask)) {
+            this.renderAllTasks();
+            this.renderTodayTasks();
+            this.renderTaskDetails(taskId);
+            setActiveView('details');
+          } else {
+            alert('Failed to update task');
+          }
+        },
+
+        handleNewTaskSubmit: function(e) {
+          e.preventDefault();
+          const form = e.target;
+          const title = form.querySelector('#task-title').value;
+          const description = form.querySelector('#task-description').value;
+          const frequency = form.querySelector('#task-frequency').value;
+
+          if (!title || !frequency) {
+            alert('Please fill out all required fields');
+            return;
+          }
+
+          const task = { title, description, frequency };
+
+          switch(frequency) {
+            case 'daily':
+              break;
+            case 'weekly':
+              const weekdays = [];
+              form.querySelectorAll('input[name="weekday"]:checked').forEach(cb => weekdays.push(cb.value));
+              if (weekdays.length === 0) {
+                alert('Please select at least one day of the week.');
+                return;
+              }
+              task.weekdays = weekdays;
+              break;
+            case 'monthly':
+              const monthDays = [];
+              form.querySelectorAll('input[name="month-day"]:checked').forEach(cb => monthDays.push(cb.value));
+              if (monthDays.length === 0) {
+                alert('Please select at least one day of the month.');
+                return;
+              }
+              task.monthDays = monthDays;
+              break;
+            case 'quarterly':
+              const quarterDays = [];
+              form.querySelectorAll('input[name="quarter-day"]:checked').forEach(cb => quarterDays.push(cb.value));
+              if (quarterDays.length === 0) {
+                alert('Please select at least one day of the quarter.');
+                return;
+              }
+              task.quarterDays = quarterDays;
+              break;
+            case 'yearly':
+              task.yearlyMonth = form.querySelector('#yearly-month').value;
+              task.yearlyDay = form.querySelector('#yearly-day').value;
+              break;
+            case 'custom_interval':
+              const intervalDays = parseInt(form.querySelector('#interval-days').value);
+              if (intervalDays < 1) {
+                alert('Please enter a valid interval (minimum 1 day).');
+                return;
+              }
+              task.intervalDays = intervalDays;
+              break;
+          }
+
+          TaskStorage.saveTask(task);
+          form.reset();
+          form.querySelectorAll('.frequency-options').forEach(opt => opt.classList.remove('show'));
+          setActiveView('today');
+          this.renderTodayTasks();
+          this.renderAllTasks();
+        }
+      };
+
+      // Initialize
+      initMonthDaysGrid();
+      initQuarterDaysGrid();
+      updateYearlyDayOptions();
+      yearlyMonth.addEventListener('change', updateYearlyDayOptions);
+
+      // View switching
+      function setActiveView(viewName) {
+        tabs.forEach(tab => {
+          if (tab.dataset.view === viewName) {
+            tab.classList.add('active');
+          } else {
+            tab.classList.remove('active');
+          }
+        });
+
+        views.forEach(view => {
+          if (view.id === `${viewName}-view`) {
+            view.classList.remove('hidden');
+          } else {
+            view.classList.add('hidden');
+          }
+        });
+
+        if (viewName === 'today') {
+          TaskManager.renderUpcomingTasks(30);
+        }
+      }
+
+      tabs.forEach(tab => {
+        tab.addEventListener('click', function() {
+          const viewName = tab.dataset.view;
+          setActiveView(viewName);
+          if (viewName === 'today') {
+            TaskManager.renderTodayTasks();
+          } else if (viewName === 'all') {
+            TaskManager.renderAllTasks();
+          }
+        });
+      });
+
+      // Frequency options toggle
+      taskFrequency.addEventListener('change', function() {
+        const selectedFreq = this.value;
+        frequencyOptions.forEach(opt => opt.classList.remove('show'));
+        if (selectedFreq) {
+          const optionsElement = document.getElementById(`${selectedFreq}-options`);
+          if (optionsElement) {
+            optionsElement.classList.add('show');
+          }
+        }
+      });
+
+      // Form submit
+      taskForm.addEventListener('submit', (e) => {
+        TaskManager.handleNewTaskSubmit(e);
+      });
+
+      // Task title clicks
+      todayTasks.addEventListener('click', (e) => {
+        if (e.target.classList.contains('task-title')) {
+          e.preventDefault();
+          const taskId = e.target.dataset.taskId;
+          TaskManager.renderTaskDetails(taskId);
+          setActiveView('details');
+        }
+      });
+
+      const upcomingTasks = document.getElementById('upcoming-tasks');
+      upcomingTasks.addEventListener('click', (e) => {
+        if (e.target.classList.contains('task-title')) {
+          e.preventDefault();
+          const taskId = e.target.dataset.taskId;
+          TaskManager.renderTaskDetails(taskId);
+          setActiveView('details');
+        }
+      });
+
+      allTasks.addEventListener('click', (e) => {
+        if (e.target.classList.contains('task-title')) {
+          e.preventDefault();
+          const taskId = e.target.dataset.taskId;
+          TaskManager.renderTaskDetails(taskId);
+          setActiveView('details');
+        }
+      });
+
+      // Initial render
+      TaskManager.renderTodayTasks();
+      TaskManager.renderAllTasks();
+    });
+  </script>
+</body>
+</html>
